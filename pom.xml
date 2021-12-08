@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.6.0</version>
+    <relativePath/> <!-- lookup parent from repository -->
+  </parent>
+  <groupId>com.chakib.example.jms</groupId>
+  <artifactId>jms-sample</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>jms-sample</name>
+  <description>Demo JMS project for Spring Boot</description>
+  <properties>
+    <java.version>1.8</java.version>
+  </properties>
+  <dependencies>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-jms</artifactId>
+    </dependency>
+    <!-- Tibco EMS Start -->
+
+    <dependency>
+      <groupId>javax.jms</groupId>
+      <artifactId>javax.jms-api</artifactId>
+      <version>2.0.1</version>
+    </dependency>
+
+    <!--
+    generated from local tibco installation : tibco\ems\10.1\lib
+    mvn install:install-file -Dfile=tibjms.jar -DgroupId=com.tibco.ems -DartifactId=tibjms -Dversion=10.1 -Dpackaging=jar -DgeneratePom=true
+    -->
+    <dependency>
+      <groupId>com.tibco.ems</groupId>
+      <artifactId>tibjms</artifactId>
+      <version>10.1</version>
+    </dependency>
+
+    <!-- Tibco EMS End -->
+
+
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
