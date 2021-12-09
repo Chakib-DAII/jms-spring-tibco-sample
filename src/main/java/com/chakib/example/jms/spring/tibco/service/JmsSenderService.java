@@ -41,4 +41,11 @@ public class JmsSenderService {
 		if(message == null) throw new ResponseStatusException(HttpStatus.NO_CONTENT, "The queue is empty");
 		return message;
 	}
+
+	public Object readMessage(final String messageSelector) {
+		Object message =  jmsTemplate.receiveSelectedAndConvert(queue, messageSelector);
+		if(message == null) throw new ResponseStatusException(HttpStatus.NO_CONTENT, "The queue is empty");
+		return message;
+	}
+
 }
