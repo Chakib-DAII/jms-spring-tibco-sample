@@ -1,11 +1,15 @@
 package com.chakib.example.jms.pub.sub;
 import com.chakib.example.jms.listeners.JmsListener;
+import com.tibco.tibjms.TibjmsConnectionFactory;
+import java.util.Properties;
+import javax.jms.QueueConnectionFactory;
 import javax.jms.Session;
 import javax.jms.Topic;
 import javax.jms.TopicConnection;
 import javax.jms.TopicConnectionFactory;
 import javax.jms.TopicSession;
 import javax.jms.TopicSubscriber;
+import javax.naming.Context;
 import javax.naming.InitialContext;
 
 public class PsReceiver implements Runnable{
@@ -20,8 +24,15 @@ public class PsReceiver implements Runnable{
     public PsReceiver(String topicConnectionFactoryName, String topicName) {
         try {
             //Create and start connection
-            context = new InitialContext();
+            Properties props = new Properties();
+
+            //setting initial context factory and provider
+            props.setProperty(Context.INITIAL_CONTEXT_FACTORY, "com.tibco.tibjms.naming.TibjmsInitialContextFactory");
+            props.setProperty(Context.PROVIDER_URL,"tcp://localhost:7222");
+
+            context = new InitialContext(props);
             topicConnectionFactory = (TopicConnectionFactory)context.lookup(topicConnectionFactoryName);
+            //topicConnectionFactory = (TopicConnectionFactory)new TibjmsConnectionFactory();
             topicConnection = topicConnectionFactory.createTopicConnection();
             topicConnection.start();
             //2) create queue session

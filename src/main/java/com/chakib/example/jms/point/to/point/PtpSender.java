@@ -1,5 +1,6 @@
 package com.chakib.example.jms.point.to.point;
 
+import com.tibco.tibjms.TibjmsConnectionFactory;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Properties;
@@ -26,10 +27,14 @@ public class PtpSender implements Runnable{
     try {
       //1)Create and start connection
       Properties props = new Properties();
-      props.setProperty(Context.INITIAL_CONTEXT_FACTORY,"com.sun.enterprise.naming.impl.SerialInitContextFactory");
-      props.setProperty(Context.PROVIDER_URL,"stcms://localhost:18007");
+
+      //setting initial context factory and provider
+      props.setProperty(Context.INITIAL_CONTEXT_FACTORY, "com.tibco.tibjms.naming.TibjmsInitialContextFactory");
+      props.setProperty(Context.PROVIDER_URL,"tcp://localhost:7222");
+
       context = new InitialContext(props);
       this.queueConnectionFactory = (QueueConnectionFactory)context.lookup(queueConnectionFactoryName);
+      //this.queueConnectionFactory = (QueueConnectionFactory)new TibjmsConnectionFactory();
       queueConnection = queueConnectionFactory.createQueueConnection();
       queueConnection.start();
       //2) create queue session

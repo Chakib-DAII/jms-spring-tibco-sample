@@ -71,4 +71,23 @@
     </plugins>
   </build>
 
+  <repositories>
+    <repository>
+      <id>nexus-public</id>
+      <url>http://localhost:8081/repository/maven-public/</url>
+    </repository>
+  </repositories>
+
+  <distributionManagement>
+    <snapshotRepository>
+      <id>nexus-snapshot</id>
+      <name>Nexus Snapshot Repo</name>
+      <url>http://localhost:8081/repository/maven-snapshots/</url>
+    </snapshotRepository>
+    <repository>
+      <id>nexus-release</id>
+      <name>Nexus Release Repo</name>
+      <url>http://localhost:8081/repository/maven-releases/</url>
+    </repository>
+  </distributionManagement>
 </project>
