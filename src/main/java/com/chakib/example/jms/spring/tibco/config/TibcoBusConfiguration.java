@@ -71,6 +71,8 @@ public class TibcoBusConfiguration {
 		jmsTemplate.setSessionAcknowledgeMode(Session.CLIENT_ACKNOWLEDGE);
 		jmsTemplate.setSessionTransacted(false);
 		jmsTemplate.setReceiveTimeout(100);
+		//if we don't need the Jackson serialisation, the default Message Converter is :
+		// org.springframework.jms.support.converter.SimpleMessageConverter
 		jmsTemplate.setMessageConverter(jacksonJmsMessageConverter());
 
 		return jmsTemplate;
