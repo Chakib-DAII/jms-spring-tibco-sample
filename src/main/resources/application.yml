@@ -1,10 +1,24 @@
 ems:
   enabled: true
-  server: localhost
-  port: 7222
-  user: user
-  password: password
+  servers:
+    -
+      server: localhost
+      port: 7222
+      user: user
+      password: password
+
+    -
+      server: localhost
+      port: 7222
+      user: user
+      password: password
+
+    -
+      server: localhost
+      port: 7222
+      user: user
+      password: password
+
   queue: test.queue
-  spring:
-    listener:
+  listener:
       enabled: false
