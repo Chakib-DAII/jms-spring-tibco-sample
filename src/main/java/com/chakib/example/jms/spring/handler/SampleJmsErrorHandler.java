@@ -29,7 +29,7 @@ public class SampleJmsErrorHandler implements ErrorHandler {
   public SampleJmsErrorHandler(JmsProperties jmsProperties, ConnectionFactory connectionFactory) {
     this.jmsProperties = jmsProperties;
     this.connectionFactory = connectionFactory;
-    this.failOverHandler = new FailOverHandler(jmsProperties, connectionFactory);
+    this.failOverHandler = new TibjmsFailOverHandler(jmsProperties, connectionFactory);
   }
 
   @Override
